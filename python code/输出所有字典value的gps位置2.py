@@ -19,7 +19,7 @@ def find_out_value(key):
 
 print(find_out_value(100))
 
-print(11111)
+
 
 #for i in range(1,101):
  #   find_out_value(i)
