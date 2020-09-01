@@ -18,9 +18,7 @@ def find_out_value(key):
     return ww
 
 print(find_out_value(100))
-
-
-
+print(222)
 #for i in range(1,101):
  #   find_out_value(i)
 print(find_out_value(99))
