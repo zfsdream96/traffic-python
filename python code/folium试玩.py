@@ -7,6 +7,8 @@ Description: In User Settings Edit
 FilePath: \final\test.py
 '''
 #%%
+import pandas as pd
+
 import folium
 from folium.plugins import FastMarkerCluster
 f = open('C:/Users/zfsdr/OneDrive - stu.scu.edu.cn/Desktop/changeposition3/final/new_100_dict21111.txt','r')
