@@ -18,9 +18,9 @@ Created on Mon Aug 10 15:25:56 2020
     3. lamuda函数的使用
 
 """
-
-import pandas as pd
 import numpy as np
+import pandas as pd
+
 #读取原始文件
 data=pd.read_csv('C:/Users/zfsdr/OneDrive - stu.scu.edu.cn/Desktop/new/result.csv')
 #读取原文件的O
