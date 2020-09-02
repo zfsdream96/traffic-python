@@ -1,5 +1,5 @@
-select vehiclenum,日期1,日期2,上车点编号，下车点编号，计数,operationmil,operationamount,operationtime
-from (select vehiclenum,日期1,日期2,上车点编号,下车点编号,count(*) as 计数,operationmil,operationamount,operationtime
+select 日期1,日期2,上车点编号，下车点编号，计数,operationmil,operationamount,operationtime
+from (select 日期1,日期2,上车点编号,下车点编号,count(*) as 计数,operationmil,operationamount,operationtime
 from 
 (select vehiclenum,to_char(PAIDTIME,'YYYY-MM-DD')as 日期1,to_char(PAIDTIME,'hh24:mi:ss')as 日期2,
 GETONLONGITUDE as 上车点经度, 
@@ -492,6 +492,7 @@ or vehiclenum ='川A-TQ868'
 where GETONLONGITUDE>=103.932078 and GETONLONGITUDE<=104.208045
 and GETOFFLONGITUDE>=103.932078 and GETOFFLONGITUDE<=104.208045
 and GETONLATITUDE>=30.543160 and GETONLATITUDE<=30.785860
-and GETOFFLATITUDE>=30.543160 and GETOFFLATITUDE<=30.785860 and operationtime>0 and operationmil<75 and operationmil>1 )
-group by rollup (vehiclenum,上车点编号,下车点编号,日期1，日期2,operationmil,operationamount,operationtime)
+and GETOFFLATITUDE>=30.543160 and GETOFFLATITUDE<=30.785860 and operationtime>0 and operationmil<75 and operationmil>1 and (operationmil/(operationtime/60/60))<80 
+and (operationmil/(operationtime/60/60))>15 and (operationamount/operationmil)>2.4 and (operationamount/operationmil)<5 )
+group by rollup (上车点编号,下车点编号,日期1，日期2,operationmil,operationamount,operationtime)
 having grouping_id(上车点编号,下车点编号,日期1，日期2,operationmil,operationamount,operationtime)=0);

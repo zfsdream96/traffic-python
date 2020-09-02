@@ -284,7 +284,6 @@ from WK_OPERATIONINCOME20150629
 union
 select *
 from WK_OPERATIONINCOME20150630)
-where operationtime>0
 
 
 
@@ -293,8 +292,9 @@ where operationtime>0
 where GETONLONGITUDE>=103.932078 and GETONLONGITUDE<=104.208045
 and GETOFFLONGITUDE>=103.932078 and GETOFFLONGITUDE<=104.208045
 and GETONLATITUDE>=30.543160 and GETONLATITUDE<=30.785860
-and GETOFFLATITUDE>=30.543160 and GETOFFLATITUDE<=30.785860 and operationtime>0 and operationmil<75 and operationmil>1 )
+and GETOFFLATITUDE>=30.543160 and GETOFFLATITUDE<=30.785860 and operationtime>0 and operationmil<75 and operationmil>1 and operationmil<75 and operationmil>1 and (operationmil/(operationtime/60/60))<80 
+and (operationmil/(operationtime/60/60))>15 and (operationamount/operationmil)>2.4 and (operationamount/operationmil)<6 )
 group by rollup (上车点编号,下车点编号,日期1，日期2,operationmil,operationamount,operationtime)
-having grouping_id(上车点编号,下车点编号,日期1，日期2,operationmil,operationamount,operationtime)=0);
+having grouping_id (上车点编号,下车点编号,日期1，日期2,operationmil,operationamount,operationtime)=0);
 
 
